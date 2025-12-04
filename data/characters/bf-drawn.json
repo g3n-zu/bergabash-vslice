@@ -1,0 +1,119 @@
+{
+  "danceEvery": 1,
+  "offsets": [-160, 200],
+  "renderType": "sparrow",
+  "version": "1.0.1",
+  "scale": 1.3,
+  "flipX": true,
+  "cameraOffsets": [-150, 350],
+  "name": "Boyfriend (Drawn)",
+  "flipY": false,
+  "singTime": 4,
+  "isPixel": false,
+  "startingAnimation": "idle",
+  "assetPath": "characters/BoydrawnFINAL",
+  "healthIcon": {
+    "id": ""
+  },
+  "animations": [
+    {
+      "offsets": [-5, 0],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL Idle",
+      "flipX": false,
+      "looped": false,
+      "name": "idle",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 12
+    },
+    {
+      "offsets": [0, -2],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL down",
+      "flipX": false,
+      "looped": false,
+      "name": "singDOWN",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 12
+    },
+    {
+      "offsets": [-12, 1],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL right",
+      "flipX": false,
+      "looped": false,
+      "name": "singRIGHT",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 12
+    },
+    {
+      "offsets": [15, 2],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL left",
+      "flipX": false,
+      "looped": false,
+      "name": "singLEFT",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 12
+    },
+    {
+      "offsets": [-2, -3],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL Up",
+      "flipX": false,
+      "looped": false,
+      "name": "singUP",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 12
+    },
+    {
+      "offsets": [4, 7],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL 1U_Miss",
+      "flipX": false,
+      "looped": false,
+      "name": "singUPmiss",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 24
+    },
+    {
+      "offsets": [-17, -6],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL 1R_Miss",
+      "flipX": false,
+      "looped": false,
+      "name": "singRIGHTmiss",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 24
+    },
+    {
+      "offsets": [26, -1],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL 1L_Miss",
+      "flipX": false,
+      "looped": false,
+      "name": "singLEFTmiss",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 24
+    },
+    {
+      "offsets": [8, -3],
+      "frameIndices": [],
+      "prefix": "BoydrawnFINAL 1D_Miss",
+      "flipX": false,
+      "looped": false,
+      "name": "singDOWNmiss",
+      "flipY": false,
+      "assetPath": null,
+      "frameRate": 24
+    }
+  ]
+}

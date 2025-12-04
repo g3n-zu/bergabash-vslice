@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BoydrawnFINAL.png">
+<SubTexture name="BoydrawnFINAL Idle0000" x="1313" y="0" width="332" height="364" frameX="-199" frameY="-167" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Idle0001" x="978" y="899" width="324" height="393" frameX="-206" frameY="-138" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Idle0002" x="324" y="899" width="324" height="407" frameX="-208" frameY="-124" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Idle0003" x="0" y="899" width="324" height="410" frameX="-209" frameY="-121" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Idle0004" x="0" y="899" width="324" height="410" frameX="-209" frameY="-121" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Up0000" x="296" y="460" width="280" height="434" frameX="-239" frameY="-89" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL Up0001" x="701" y="0" width="324" height="450" frameX="-222" frameY="-73" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1U_Miss0000" x="0" y="460" width="296" height="439" frameX="-253" frameY="-84" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1U_Miss0001" x="0" y="460" width="296" height="439" frameX="-253" frameY="-84" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL right0000" x="1025" y="0" width="288" height="412" frameX="-255" frameY="-121" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL right0001" x="576" y="460" width="272" height="425" frameX="-272" frameY="-108" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1R_Miss0000" x="1313" y="364" width="313" height="357" frameX="-257" frameY="-176" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1R_Miss0001" x="1313" y="364" width="313" height="357" frameX="-257" frameY="-176" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL left0000" x="343" y="0" width="358" height="459" frameX="-125" frameY="-74" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL left0001" x="0" y="0" width="343" height="460" frameX="-142" frameY="-73" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1L_Miss0000" x="0" y="1309" width="383" height="329" frameX="-112" frameY="-203" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1L_Miss0001" x="0" y="1309" width="383" height="329" frameX="-112" frameY="-203" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL down0000" x="648" y="899" width="330" height="399" frameX="-173" frameY="-127" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL down0001" x="1645" y="0" width="346" height="337" frameX="-151" frameY="-189" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1D_Miss0000" x="1645" y="337" width="344" height="328" frameX="-177" frameY="-195" frameWidth="702" frameHeight="668" />
+<SubTexture name="BoydrawnFINAL 1D_Miss0001" x="1645" y="337" width="344" height="328" frameX="-177" frameY="-195" frameWidth="702" frameHeight="668" />
+</TextureAtlas>

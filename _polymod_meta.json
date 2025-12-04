@@ -1,0 +1,16 @@
+{
+  "title": "BERGABASH (V-Slice)",
+  "description": "Mod Description",
+  "contributors": [
+    {
+      "name": "GENZU",
+      "icon": "genzu",
+      "color": "#ff9ecf",
+      "role": "Roles",
+      "url": "https://www.youtube.com/@_genzu"
+    }
+  ],
+  "api_version": "0.7.5",
+  "mod_version": "0.1.2",
+  "license": "Apache 2.0"
+}

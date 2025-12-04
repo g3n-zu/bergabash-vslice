@@ -1,0 +1,124 @@
+{
+  "version": "1.0.0",
+  "renderType": "sparrow",
+  "offsets": [-40, 180],
+  "danceEvery": 1,
+  "scale": 1.3,
+  "name": "Bergatron (Space)",
+  "cameraOffsets": [-550, 0],
+  "flipX": false,
+  "startingAnimation": "idle",
+  "isPixel": false,
+  "singTime": 4,
+  "flipY": false,
+  "healthIcon": {
+    "offsets": [0, 0],
+    "isPixel": false,
+    "scale": 1,
+    "flipX": false,
+    "id": ""
+  },
+  "assetPath": "characters/Bergaspace2",
+  "generatedBy": "Nova Character Editor v3.0.1",
+  "animations": [
+    {
+      "offsets": [0, 0],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 Idle",
+      "name": "idle",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [0, 22],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 Down",
+      "name": "singDOWN",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-89, -1],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 Right",
+      "name": "singRIGHT",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [208, -3],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 Left",
+      "name": "singLEFT",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-4, 55],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 Up",
+      "name": "singUP",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-3, 74],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 BUp",
+      "name": "singUP-alt",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [188, 27],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 BLeft",
+      "name": "singLEFT-alt",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [0, 22],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 BDown",
+      "name": "singDOWN-alt",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-129, -1],
+      "frameIndices": [],
+      "prefix": "Bergaspace2 BRight",
+      "name": "singRIGHT-alt",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    }
+  ]
+}

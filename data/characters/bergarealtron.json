@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "renderType": "sparrow",
+  "offsets": [0, 0],
+  "danceEvery": 1,
+  "scale": 1.3,
+  "name": "Bergatron (IRL)",
+  "cameraOffsets": [0, 0],
+  "flipX": false,
+  "startingAnimation": "idle",
+  "isPixel": false,
+  "singTime": 4,
+  "flipY": false,
+  "healthIcon": {
+    "offsets": [0, 0],
+    "isPixel": false,
+    "scale": 1,
+    "flipX": false,
+    "id": ""
+  },
+  "assetPath": "characters/JPR_BergatronNew3",
+  "generatedBy": "Nova Character Editor v3.0.1",
+  "animations": [
+    {
+      "offsets": [0, 0],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 Idle",
+      "name": "idle",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-36, 2],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 Down",
+      "name": "singDOWN",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-121, -24],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 Right",
+      "name": "singRIGHT",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [-38, -52],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 Left",
+      "name": "singLEFT",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [37, -41],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 Up",
+      "name": "singUP",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    },
+    {
+      "offsets": [0, 0],
+      "frameIndices": [],
+      "prefix": "JPR_BergatronNew3 LetsCheckThisOut",
+      "name": "JPR_BergatronNew3 LetsCheckThisOut",
+      "looped": false,
+      "flipX": false,
+      "flipY": false,
+      "frameRate": 24,
+      "assetPath": null
+    }
+  ]
+}

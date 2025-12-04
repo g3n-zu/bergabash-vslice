@@ -1,0 +1,47 @@
+import flixel.FlxG;
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+
+class NoteCameraMovement extends Module
+{
+    var mustHitFocus:Bool = false;
+    var offsetLocked:Bool = false;
+
+    var offsetMagnitude:Float = 45;
+
+    public function new()
+	{
+		super('NoteCameraMovement', 0, { state: PlayState });
+	}
+
+    override function onNoteHit(event:HitNoteScriptEvent) 
+    {
+        var isMustHit = event.note.noteData.getMustHitNote();
+        if((mustHitFocus && isMustHit) || (!mustHitFocus && !isMustHit)) followNote(event.note.direction);
+    }
+
+    override function onSongEvent(event:SongEventScriptEvent) 
+    {
+        if(event.eventData.eventKind == "FocusCamera")
+        {
+            switch(Std.parseInt(event.eventData.value.char))
+            {
+                case 0:
+                    mustHitFocus = true;
+                case 1:
+                    mustHitFocus = false;
+            }
+        }
+    }
+
+    function followNote(direction:Int)
+    {
+        if(offsetLocked) FlxG.camera.targetOffset.setPosition(0,0);
+        else
+        {
+            var horizontal = (direction == 0 || direction == 3);
+            FlxG.camera.targetOffset.x = (horizontal)? ((direction == 0)? -offsetMagnitude:offsetMagnitude):0;
+            FlxG.camera.targetOffset.y = (horizontal)? 0:((direction == 1)? offsetMagnitude:-offsetMagnitude);
+        }
+    }
+}

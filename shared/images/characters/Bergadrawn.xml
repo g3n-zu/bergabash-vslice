@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Bergadrawn.png">
+<SubTexture name="Bergadrawn Down0000" x="2085" y="0" width="494" height="582" frameX="-306" frameY="-407" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Down0001" x="1607" y="0" width="478" height="594" frameX="-312" frameY="-395" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Idle0000" x="280" y="813" width="286" height="697" frameX="-409" frameY="-300" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Idle0001" x="0" y="813" width="280" height="704" frameX="-412" frameY="-292" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Left0000" x="566" y="813" width="519" height="637" frameX="-205" frameY="-359" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Left0001" x="1085" y="813" width="483" height="636" frameX="-244" frameY="-361" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Right0000" x="0" y="0" width="502" height="813" frameX="-424" frameY="-185" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Right0001" x="502" y="0" width="478" height="780" frameX="-408" frameY="-216" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Up0000" x="980" y="0" width="296" height="738" frameX="-385" frameY="-258" frameWidth="1104" frameHeight="1136" />
+<SubTexture name="Bergadrawn Up0001" x="1276" y="0" width="331" height="712" frameX="-353" frameY="-287" frameWidth="1104" frameHeight="1136" />
+</TextureAtlas>

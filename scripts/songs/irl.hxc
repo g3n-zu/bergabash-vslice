@@ -1,0 +1,195 @@
+import flixel.FlxG;
+import flixel.util.FlxTimer;
+import flixel.util.FlxColor;
+import funkin.play.song.Song;
+import flixel.tweens.FlxEase;
+import funkin.play.PlayState;
+import flixel.tweens.FlxTween;
+import funkin.play.character.CharacterType;
+import funkin.play.character.CharacterDataParser;
+
+
+import hxvlc.flixel.FlxVideoSprite;
+
+class irlSong extends Song {
+
+    var cutscene:FlxVideoSprite;
+    var ogDadY;
+
+	public function new() {
+		super('irl');
+	}
+
+    function onCreate(event:ScriptEvent) {
+        super.onCreate(event);
+        
+        cutscene = new FlxVideoSprite(0, 0);
+        cutscene.load(Paths.videos("bergcutscene"));
+        cutscene.cameras = [PlayState.instance.camHUD];
+        FlxG.state.add(cutscene);
+        cutscene.visible = true;
+
+        cutscene.bitmap.onEndReached.add(function() {
+            cutscene.stop();
+            cutscene.visible = false;
+        });
+
+        cutscene.scrollFactor.set();
+        cutscene.scale.set(1.7, 1.7);
+        cutscene.updateHitbox();
+
+		CharacterDataParser.fetchCharacter("bf-drawn");
+		CharacterDataParser.fetchCharacter("bf-space");
+		CharacterDataParser.fetchCharacter("bergaspace");
+		CharacterDataParser.fetchCharacter("bergadrawn");
+
+        if (!FlxG.onMobile) hideHUD();
+
+    }
+
+    function onPause(event) {
+        super.onPause(event);
+        if (cutscene != null && cutscene.bitmap.isPlaying) {
+            cutscene.pause();
+        }
+    }
+
+    function onResume(event) {
+        super.onResume(event);
+        if (cutscene != null) {
+            cutscene.resume();
+        }
+    }
+
+    function onStepHit(event) {
+        super.onStepHit(event);
+        var curStep = event.step;
+
+        switch (curStep) {
+            case 768:
+                byebyebergatron();
+            case 784:
+                playCutscene();
+            case 1056:
+                space();
+            case 1276:
+                showDrawnRoom();
+            case 1280:                                       
+
+                // Force Change Character
+
+                var dad = PlayState.instance.currentStage.getDad();
+                var bf = PlayState.instance.currentStage.getBoyfriend();
+
+                dad.destroy(); 
+                PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bergadrawn"), CharacterType.DAD);
+                
+                bf.destroy();
+                PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bf-drawn"), CharacterType.BF);
+
+                PlayState.instance.currentStage.getBoyfriend().x += 290;
+                PlayState.instance.currentStage.getBoyfriend().y -= 290;
+
+                PlayState.instance.currentStage.getDad().y += 200;
+
+            case 2056:
+                end();
+        }
+
+    }
+    
+    function byebyebergatron() {
+        trace("bye bye!");
+        if (PlayState.instance == null) return;
+        var dad = PlayState.instance.currentStage.getDad();
+        ogDadY = dad.y;
+        FlxTween.tween(dad, {y: -2000, angle: 270}, 1, {
+            ease: FlxEase.backIn,
+            onComplete: _ -> {
+                dad.angle = 0;
+            }
+        });
+    }
+
+    function playCutscene() {
+        if (cutscene != null) {
+            cutscene.visible = true;
+		    cutscene.play();
+        }
+    }
+
+    function space() {
+        trace("Space Time!!"); 
+
+        FlxG.camera.flash(FlxColor.WHITE, 1);
+
+        var dad = PlayState.instance.currentStage.getDad();
+        var bf = PlayState.instance.currentStage.getBoyfriend();
+
+        var room = PlayState.instance.currentStage.getNamedProp("room");
+        var space = PlayState.instance.currentStage.getNamedProp("space");
+        room.alpha = 0;
+        space.alpha = 1;
+        
+        dad.destroy(); 
+		PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bergaspace"), CharacterType.DAD);
+        
+        bf.destroy();
+		PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bf-space"), CharacterType.BF);
+
+        PlayState.instance.currentStage.getDad().x -= 300;
+        PlayState.instance.currentStage.getDad().y -= 400;
+
+    }
+
+    function showDrawnRoom() {
+        trace("Epic Art!!"); 
+        new FlxTimer().start(0.7, ()->{
+            FlxG.camera.fade(FlxColor.BLACK, 0.5, true);
+            var space = PlayState.instance.currentStage.getNamedProp("space");
+            var roomDraw = PlayState.instance.currentStage.getNamedProp("room_draw");
+            space.alpha = 0;
+            roomDraw.alpha = 1;
+        }); 
+	    FlxG.camera.fade(FlxColor.BLACK, 0.5, false);
+    }
+
+    function end() {
+        FlxG.camera.flash(FlxColor.WHITE, 1);
+
+        var dad = PlayState.instance.currentStage.getDad();
+        var bf = PlayState.instance.currentStage.getBoyfriend();
+
+        var roomDraw = PlayState.instance.currentStage.getNamedProp("room_draw");
+        var room = PlayState.instance.currentStage.getNamedProp("room");
+        roomDraw.alpha = 0;
+        room.alpha = 1;
+
+        dad.destroy(); 
+		PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bergarealtron"), CharacterType.DAD);
+        
+        bf.destroy();
+		PlayState.instance.currentStage.addCharacter(CharacterDataParser.fetchCharacter("bf"), CharacterType.BF);
+
+    }
+
+    function hideHUD() {
+        var opponentStrumline:FlxSprite = PlayState.instance.opponentStrumline;
+        if (opponentStrumline != null) {
+            for (arrow in opponentStrumline.members) {
+                arrow.visible = false;
+            }
+        }
+
+        PlayState.instance.iconP1.visible = false;
+        PlayState.instance.iconP2.visible = false;
+        PlayState.instance.healthBar.visible = false;
+        PlayState.instance.scoreText.visible = false;
+        PlayState.instance.healthBarBG.visible = false;
+        PlayState.instance.comboPopUps.visible = false;
+
+    }
+
+
+
+}

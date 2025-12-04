@@ -1,0 +1,39 @@
+{
+	"version": "1.0.0",
+	"titleAsset": "storymenu/titles/tutorial",
+	"props": [
+		{
+			"isPixel": false,
+			"danceEvery": 1,
+			"offsets": [
+				0,
+				0
+			],
+			"assetPath": "prop",
+			"alpha": 1,
+			"scale": 1,
+			"animations": [
+				{
+					"offsets": [
+						0,
+						0
+					],
+					"frameIndices": [],
+					"prefix": "",
+					"name": "idle",
+					"looped": false,
+					"flipX": false,
+					"flipY": false,
+					"frameRate": 24,
+					"assetPath": ""
+				}
+			]
+		}
+	],
+	"visible": false,
+	"songs": [
+		"irl"
+	],
+	"background": "#F9CF51",
+	"name": "berg"
+}
