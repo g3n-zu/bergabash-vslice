@@ -16,12 +16,14 @@ class NoteCameraMovement extends Module
 
     override function onNoteHit(event:HitNoteScriptEvent) 
     {
+        if (PlayState.instance.currentSong.id != "irl") return;
         var isMustHit = event.note.noteData.getMustHitNote();
         if((mustHitFocus && isMustHit) || (!mustHitFocus && !isMustHit)) followNote(event.note.direction);
     }
 
     override function onSongEvent(event:SongEventScriptEvent) 
     {
+        if (PlayState.instance.currentSong.id != "irl") return;
         if(event.eventData.eventKind == "FocusCamera")
         {
             switch(Std.parseInt(event.eventData.value.char))
@@ -36,6 +38,7 @@ class NoteCameraMovement extends Module
 
     function followNote(direction:Int)
     {
+        if (PlayState.instance.currentSong.id != "irl") return;
         if(offsetLocked) FlxG.camera.targetOffset.setPosition(0,0);
         else
         {
