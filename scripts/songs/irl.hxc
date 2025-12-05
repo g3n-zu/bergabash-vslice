@@ -1,4 +1,5 @@
 import flixel.FlxG;
+import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import funkin.play.song.Song;
@@ -8,13 +9,17 @@ import flixel.tweens.FlxTween;
 import funkin.play.character.CharacterType;
 import funkin.play.character.CharacterDataParser;
 
-
 import hxvlc.flixel.FlxVideoSprite;
 
 class irlSong extends Song {
 
     var cutscene:FlxVideoSprite;
     var ogDadY;
+
+    var gfx;
+    var gfy;
+
+    var death = false;
 
 	public function new() {
 		super('irl');
@@ -23,6 +28,10 @@ class irlSong extends Song {
     function onCreate(event:ScriptEvent) {
         super.onCreate(event);
         
+        gfx = PlayState.instance.currentStage.getGirlfriend().x;
+        gfy = PlayState.instance.currentStage.getGirlfriend().y;
+
+        // Preload mid-song cutscene video
         cutscene = new FlxVideoSprite(0, 0);
         cutscene.load(Paths.videos("bergcutscene"));
         cutscene.cameras = [PlayState.instance.camHUD];
@@ -38,12 +47,15 @@ class irlSong extends Song {
         cutscene.scale.set(1.7, 1.7);
         cutscene.updateHitbox();
 
-		CharacterDataParser.fetchCharacter("bf-drawn");
+        // Preload all Characters
+		CharacterDataParser.fetchCharacter("bf");
+		CharacterDataParser.fetchCharacter("bf-space");
 		CharacterDataParser.fetchCharacter("bf-space");
 		CharacterDataParser.fetchCharacter("bergaspace");
 		CharacterDataParser.fetchCharacter("bergadrawn");
+		CharacterDataParser.fetchCharacter("bergarealtron");
 
-        if (!FlxG.onMobile) hideHUD();
+        hideHUD();
 
     }
 
@@ -66,6 +78,16 @@ class irlSong extends Song {
         var curStep = event.step;
 
         switch (curStep) {
+            case 352:
+                holyShiiiitttt();
+            case 360:
+                jumpLMAO(); 
+            case 362:
+                jumpLMAO(); 
+            case 364:
+                jumpLMAO(); 
+            case 640:
+                goodbyegoldenbergatron();
             case 768:
                 byebyebergatron();
             case 784:
@@ -74,10 +96,9 @@ class irlSong extends Song {
                 space();
             case 1276:
                 showDrawnRoom();
-            case 1280:                                       
+            case 1280:
 
-                // Force Change Character
-
+                // Force Character Change
                 var dad = PlayState.instance.currentStage.getDad();
                 var bf = PlayState.instance.currentStage.getBoyfriend();
 
@@ -90,7 +111,15 @@ class irlSong extends Song {
                 PlayState.instance.currentStage.getBoyfriend().x += 290;
                 PlayState.instance.currentStage.getBoyfriend().y -= 290;
 
-                PlayState.instance.currentStage.getDad().y += 200;
+                PlayState.instance.currentStage.getDad().x += 100;
+                PlayState.instance.currentStage.getDad().y += 240;
+
+                var dadPos:Array<Float> = [PlayState.instance.currentStage.getDad().cameraFocusPoint.x, PlayState.instance.currentStage.getDad().cameraFocusPoint.y];
+                PlayState.instance.tweenCameraToPosition(dadPos[0], dadPos[1] - 300, 0);
+                
+                new FlxTimer().start(0.1, ()->{
+                    PlayState.instance.tweenCameraToPosition(dadPos[0], dadPos[1], 0.2, FlxEase.quadInOut);
+                });
 
             case 2056:
                 end();
@@ -98,6 +127,36 @@ class irlSong extends Song {
 
     }
     
+    function holyShiiiitttt() {
+        PlayState.instance.currentStage.getGirlfriend().x = gfx;
+        PlayState.instance.currentStage.getGirlfriend().y = gfy;
+        FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha : 1}, 2.0);
+    }
+
+    function jumpLMAO() {
+        var gf = PlayState.instance.currentStage.getGirlfriend();
+        FlxTween.tween(gf, {y: gfy - 60}, 0.13, {
+            ease: FlxEase.cubeOut,
+            onComplete: function(_) {
+                FlxTween.tween(gf, {y: gfy}, 0.13, {
+                    ease: FlxEase.cubeIn
+                });
+            }
+        });
+    }
+
+    function goodbyegoldenbergatron(){
+        death = true;
+        var gf = PlayState.instance.currentStage.getGirlfriend();
+        FlxTween.tween(gf, {alpha: 0}, 3.0, {
+            onComplete: function(twn) {
+                death = false;
+                gf.x = gfx;
+                gf.y = gfy;
+            }
+        });
+    }
+
     function byebyebergatron() {
         trace("bye bye!");
         if (PlayState.instance == null) return;
@@ -143,7 +202,7 @@ class irlSong extends Song {
     }
 
     function showDrawnRoom() {
-        trace("Epic Art!!"); 
+        trace("Epic Art!!");
         new FlxTimer().start(0.7, ()->{
             FlxG.camera.fade(FlxColor.BLACK, 0.5, true);
             var space = PlayState.instance.currentStage.getNamedProp("space");
@@ -188,6 +247,18 @@ class irlSong extends Song {
         PlayState.instance.healthBarBG.visible = false;
         PlayState.instance.comboPopUps.visible = false;
 
+    }
+
+    function onUpdate(event) {
+        super.onUpdate(event);
+        var gf = PlayState.instance.currentStage.getGirlfriend();
+        if (death && gf != null) {
+            gf.x = gfx + FlxG.random.int(-3, 3);
+            gf.y = gfy + FlxG.random.int(-3, 3);
+        } else {
+            gf.x = FlxMath.lerp(gf.x, gfx, 10 * event.elapsed);
+            gf.y = FlxMath.lerp(gf.y, gfy, 10 * event.elapsed);
+        }
     }
 
 

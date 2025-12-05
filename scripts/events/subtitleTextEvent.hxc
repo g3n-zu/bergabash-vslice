@@ -1,0 +1,146 @@
+import funkin.play.event.SongEvent;
+
+class SubtitleTextEvent extends SongEvent {
+    
+    public function new() {
+        super('SubtitleTextEvent');
+    }
+
+    public override function getTitle() {
+        return "Subtitle Text";
+    }
+
+    public override function getEventSchema() {
+        return [
+            {
+                name: "text",
+                title: "Text",
+                type: "string",
+            },
+            {
+                name: "duration",
+                title: "Duration",
+                type: "float",
+                min: "0",
+                max: "9999",
+                step: "0.01",
+                defaultValue: "1"
+            },
+        ];
+    }
+    
+    public override function handleEvent(data) {
+
+    }
+}
+
+import Math;
+import flixel.FlxG;
+import funkin.Preferences;
+import flixel.text.FlxText;
+import flixel.util.FlxTimer;
+import flixel.util.FlxColor;
+import funkin.play.PlayState;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import funkin.modding.module.Module;
+import flixel.text.FlxTextBorderStyle;
+
+using StringTools;
+
+class SubtitleTextEventHandler extends Module {
+
+    var texts = [];
+
+    public function new() {
+        super('SubtitleTextEventHandler');
+    }
+
+    override function onSongEvent(event) {
+        super.onSongEvent(event);
+        var event = event.eventData;
+        if (event.eventKind == "SubtitleTextEvent") {
+            trace(event.value.text);
+            var text:String = event.value.text;
+            var split:Array<String> = text.split('');
+            var duration = event.value.duration;
+            var objs:Array<FlxText> = [];
+
+            var pos = new FlxText(0, 0, 0, text, 24);
+            pos.scrollFactor.set();
+            pos.setFormat(Paths.font("vrc.ttf"), 28, FlxColor.WHITE, "center", FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+            pos.cameras = [PlayState.instance.camHUD];
+            pos.updateHitbox();
+            pos.screenCenter();
+            pos.x -= 45;
+            pos.y = FlxG.height - 100;
+            if (Preferences.downscroll || FlxG.onMobile)
+                 pos.y = 100;
+
+            for (i in 0...split.length) {
+                // trace(split[i]);
+                var obj = new FlxText((i == 0 ? pos.x : (objs[i - 1].x + objs[i - 1].fieldWidth) - 4), pos.y, 0, split[i], 24);
+                PlayState.instance.add(obj);
+                obj.camera = PlayState.instance.camHUD;
+                obj.setFormat(Paths.font("vcr.ttf"), 28, FlxColor.WHITE, null, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+                objs.push(obj);
+
+                obj.centerOrigin();
+                obj.scale.set(2, 2);
+                obj.alpha = 0;
+                obj.angle = FlxG.random.float(-35, 35);
+
+                pos.destroy();
+
+                FlxTween.tween(obj, {
+                    alpha : 1,
+                    angle : 0
+                }, 1, {ease: FlxEase.backOut, startDelay: 0.05 * i});
+
+                FlxTween.tween(obj.scale, {
+                    x : 1,
+                    y : 1
+                }, 1, {ease: FlxEase.backOut, startDelay: 0.05 * i});
+
+                new FlxTimer().start(event.value.duration, () -> {
+                    FlxTween.tween(obj, {
+                        alpha: 0,
+                        angle: FlxG.random.float(-35, 35)
+                    }, 1, {
+                        ease: FlxEase.backIn, 
+                        startDelay: 0.05 * i,
+                        onComplete: _ -> {
+                            PlayState.instance.remove(obj);
+                            obj.destroy();
+                            obj.kill();
+                            if (i == objs.length - 1)
+                                texts.remove(objs);
+                        }
+                    });
+
+                    FlxTween.tween(obj.scale, {
+                        x : 0,
+                        y : 0
+                    }, 1, {ease: FlxEase.backIn, startDelay: 0.05 * i});
+
+                });
+            }
+            texts.push(objs);
+        }
+    }
+
+    function update(elapsed) {
+        super.update(elapsed);
+        for (i in 0...texts.length) {
+            var targetY = 50 + (45 * (texts.length - 1 - i));
+            var fade = Math.pow(0.7, texts.length - 1 - i);
+            for (members in 0...texts[i].length) {
+                var obj = texts[i][members];
+                obj.y = FlxMath.lerp(obj.y, targetY, 0.2);
+                if (obj != null && !obj.destroyed && obj.scale != null && obj.scale.x <= 1)
+                    obj.alpha = FlxMath.lerp(obj.alpha, fade, 0.1);
+            }
+        }
+    }
+
+}
